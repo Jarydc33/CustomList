@@ -9,41 +9,42 @@ namespace ListProject
     public class CustomList<T>
     {
         T[] items;
-        public int Count;
+        int count;
+        public int Count { get { return count; } }
         public int Capacity;
 
         public CustomList()
         {
             items = new T[0];
-            Count = 0;
+            count = 0;
             Capacity = 0;
         }
         
         public void Add(T item)
         {
-            if(items.Length == Count)
+            if(items.Length == count)
             {
                 Capacity += 4;
                 T[] tempArray = new T[Capacity];
                 items = tempArray;
             }
 
-            items[Count] = item;
-            Count++;
+            items[count] = item;
+            count++;
         }
 
         public T this[int index]
         {
             get
             {
-                if (index > Count - 1)
-                    throw new IndexOutOfRangeException();
+                if (index > count - 1 || index < 0)
+                    throw new IndexOutOfRangeException("You can`t access that portion of the list!");
                 return items[index];
             }
             set
             {
-                if (index > Count - 1)
-                    throw new IndexOutOfRangeException();
+                if (index > count - 1 || index < 0)
+                    throw new IndexOutOfRangeException("You can`t access that portion of the list!");
                 items[index] = value;
             }
         }

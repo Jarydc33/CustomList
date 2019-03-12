@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ListProject;
+using System.IO;
 
 namespace ListProjectTest
 {
@@ -99,6 +100,69 @@ namespace ListProjectTest
 
             //Assert
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void Indexer_SetIndexTooHigh_OutOfRange()
+        {
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            list[5] = 19;
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void Indexer_GetIndexTooHigh_OutOfRange()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+
+            //Act
+            Console.WriteLine(list[5]);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void Add_SetIndexBelowZero_OutOfRange_()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+
+            //Act
+            list[-1] = 19;
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void Add_GetIndexBelowZero_OutOfRange_()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+
+            //Act
+            Console.WriteLine(list[-1]);
         }
 
 
