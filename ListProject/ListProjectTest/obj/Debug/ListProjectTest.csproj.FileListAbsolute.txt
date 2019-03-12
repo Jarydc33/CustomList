@@ -1,0 +1,17 @@
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProjectTest\obj\Debug\ListProjectTest.csprojAssemblyReference.cache
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProjectTest\obj\Debug\ListProjectTest.csproj.CoreCompileInputs.cache
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProjectTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProjectTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProjectTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProjectTest\bin\Debug\ListProjectTest.dll
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProjectTest\bin\Debug\ListProjectTest.pdb
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProjectTest\bin\Debug\ListProject.exe
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProjectTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProjectTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProjectTest\bin\Debug\ListProject.pdb
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProjectTest\bin\Debug\ListProject.exe.config
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProjectTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProjectTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProjectTest\obj\Debug\ListProjectTest.csproj.CopyComplete
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProjectTest\obj\Debug\ListProjectTest.dll
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProjectTest\obj\Debug\ListProjectTest.pdb

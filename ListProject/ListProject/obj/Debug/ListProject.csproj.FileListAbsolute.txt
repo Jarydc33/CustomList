@@ -1,0 +1,7 @@
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProject\bin\Debug\ListProject.exe.config
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProject\bin\Debug\ListProject.exe
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProject\bin\Debug\ListProject.pdb
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProject\obj\Debug\ListProject.csprojAssemblyReference.cache
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProject\obj\Debug\ListProject.csproj.CoreCompileInputs.cache
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProject\obj\Debug\ListProject.exe
+C:\Users\Jaryd\Desktop\CustomList\ListProject\ListProject\obj\Debug\ListProject.pdb

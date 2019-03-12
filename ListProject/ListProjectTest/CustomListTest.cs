@@ -52,7 +52,7 @@ namespace ListProjectTest
 
             //Act
             list.Add(addItem);
-            actual = list.capacity;
+            actual = list.Capacity;
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -80,10 +80,11 @@ namespace ListProjectTest
         }
 
         [TestMethod]
-        public void Add_AddingFifthItem_AddedToIndexFour()
+        public void Add_AddingSixthItem_AddedToIndexFive()
         {
             //Asign
             CustomList<int> list = new CustomList<int>();
+            list.Add(1);
             list.Add(1);
             list.Add(1);
             list.Add(1);
