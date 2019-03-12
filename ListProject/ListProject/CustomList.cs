@@ -6,9 +6,20 @@ using System.Threading.Tasks;
 
 namespace ListProject
 {
-    class CustomList
+    public class CustomList<T>
     {
+        T[] items;
+        int count;
+        int capacity;
+        public CustomList()
+        {
+            items = new T[0];
+        }
 
+        public void Add(T item)
+        {
+
+        }
 
 
     }
