@@ -26,6 +26,27 @@ namespace ListProjectTest
         }
 
         [TestMethod]
+        public void Add_CheckFirstElementAfterCapacityIncrement_FirstElementCorrect()
+        {
+            //Asign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(5);
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            int addItem = 1;
+            int expected = 5;
+            int actual;
+
+            //Act
+            list.Add(addItem);
+            actual = list[0];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void Add_EmptyArray_CountIncrement()
         {
             //Asign
@@ -102,19 +123,19 @@ namespace ListProjectTest
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void Indexer_SetIndexTooHigh_OutOfRange()
-        {
-            CustomList<int> list = new CustomList<int>();
-            list.Add(1);
-            list.Add(1);
-            list.Add(1);
-            list.Add(1);
-            list.Add(1);
-            list[5] = 19;
+        //[TestMethod]
+        //[ExpectedException(typeof(IndexOutOfRangeException))]
+        //public void Indexer_SetIndexTooHigh_OutOfRange()
+        //{
+        //    CustomList<int> list = new CustomList<int>();
+        //    list.Add(1);
+        //    list.Add(1);
+        //    list.Add(1);
+        //    list.Add(1);
+        //    list.Add(1);
+        //    list[5] = 19;
 
-        }
+        //}
 
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
@@ -133,25 +154,25 @@ namespace ListProjectTest
 
         }
 
+        //[TestMethod]
+        //[ExpectedException(typeof(IndexOutOfRangeException))]
+        //public void Indexer_SetIndexBelowZero_OutOfRange_()
+        //{
+        //    //Assign
+        //    CustomList<int> list = new CustomList<int>();
+        //    list.Add(1);
+        //    list.Add(1);
+        //    list.Add(1);
+        //    list.Add(1);
+        //    list.Add(1);
+
+        //    //Act
+        //    list[-1] = 19;
+        //}
+
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void Add_SetIndexBelowZero_OutOfRange_()
-        {
-            //Assign
-            CustomList<int> list = new CustomList<int>();
-            list.Add(1);
-            list.Add(1);
-            list.Add(1);
-            list.Add(1);
-            list.Add(1);
-
-            //Act
-            list[-1] = 19;
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void Add_GetIndexBelowZero_OutOfRange_()
+        public void Indexer_GetIndexBelowZero_OutOfRange_()
         {
             //Assign
             CustomList<int> list = new CustomList<int>();
@@ -165,6 +186,26 @@ namespace ListProjectTest
             Console.WriteLine(list[-1]);
         }
 
+        [TestMethod]
+        public void Indexer_GetArrayByIndex_AllowAccess_()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(4);
+            list.Add(8);
+            list.Add(16);
+            int actual;
+            int expected = 1;
+
+            //Act
+            actual = list[0];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+
+        }
 
     }
 }
