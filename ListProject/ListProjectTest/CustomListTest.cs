@@ -123,19 +123,41 @@ namespace ListProjectTest
             Assert.AreEqual(expected, actual);
         }
 
-        //[TestMethod]
-        //[ExpectedException(typeof(IndexOutOfRangeException))]
-        //public void Indexer_SetIndexTooHigh_OutOfRange()
-        //{
-        //    CustomList<int> list = new CustomList<int>();
-        //    list.Add(1);
-        //    list.Add(1);
-        //    list.Add(1);
-        //    list.Add(1);
-        //    list.Add(1);
-        //    list[5] = 19;
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void Indexer_SetIndexTooHigh_OutOfRange()
+        {
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
 
-        //}
+            list[5] = 19;
+
+        }
+
+        [TestMethod]
+        public void Indexer_SetAnIndex_IndexChangesCorrectly()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            int expected = 19;
+            int actual;
+
+            //Act
+            list[0] = 19;
+            actual = list[0];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
 
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
@@ -154,21 +176,21 @@ namespace ListProjectTest
 
         }
 
-        //[TestMethod]
-        //[ExpectedException(typeof(IndexOutOfRangeException))]
-        //public void Indexer_SetIndexBelowZero_OutOfRange_()
-        //{
-        //    //Assign
-        //    CustomList<int> list = new CustomList<int>();
-        //    list.Add(1);
-        //    list.Add(1);
-        //    list.Add(1);
-        //    list.Add(1);
-        //    list.Add(1);
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void Indexer_SetIndexBelowZero_OutOfRange_()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
 
-        //    //Act
-        //    list[-1] = 19;
-        //}
+            //Act
+            list[-1] = 19;
+        }
 
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
@@ -206,6 +228,177 @@ namespace ListProjectTest
             Assert.AreEqual(expected, actual);
 
         }
+
+        [TestMethod]
+        public void Remove_RemoveItem_ReturnsTrue()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+            list.Add(5);
+            bool expected = true;
+            bool actual;
+
+            //Act
+            actual = list.Remove(1);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        [TestMethod]
+        public void Remove_RemoveItem_CounterDecrement()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+            list.Add(5);
+            int expected = 4;
+            int actual;
+
+            //Act
+            list.Remove(1);
+            actual = list.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        [TestMethod]
+        public void Remove_RemoveSecondIndex_IndexShiftsLeft()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+            list.Add(5);
+            int expected = 3;
+            int actual;
+
+            //Act
+            list.Remove(2);
+            actual = list[1];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Remove_RemoveSecondIndex_AllIndexesShiftsLeft()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+            list.Add(5);
+            int expected = 4;
+            int actual;
+
+            //Act
+            list.Remove(2);
+            actual = list[2];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Remove_RemoveItemThenAddItem_AddMethodShouldActNormally()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+            list.Add(5);
+            int expected = 15;
+            int actual;
+
+            //Act
+            list.Remove(2);
+            list.Add(15);
+            actual = list[4];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Remove_RemoveTwoItems_IndexShiftsTwice()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(2);
+            list.Add(4);
+            list.Add(5);
+            int expected = 4;
+            int actual;
+
+            //Act
+            list.Remove(2);
+            list.Add(15);
+            actual = list[1];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        //[TestMethod]
+        //public void Remove_RemoveIndex_CapacityDecrement()
+        //{
+        //    //Assign
+        //    CustomList<int> list = new CustomList<int>();
+        //    list.Add(1);
+        //    list.Add(2);
+        //    list.Add(3);
+        //    list.Add(4);
+        //    list.Add(5);
+        //    int expected = 4;
+        //    int actual;
+
+        //    //Act
+        //    list.Remove(3);
+        //    actual = list.Capacity;
+
+        //    //Assert
+        //    Assert.AreEqual(expected, actual);
+        //}
+
+        //[TestMethod]
+        //public void Remove_CheckFourthIndexAfterCapacityDecrement_IndexFourIsNotNull()
+        //{
+        //    //Assign
+        //    CustomList<int> list = new CustomList<int>();
+        //    list.Add(1);
+        //    list.Add(2);
+        //    list.Add(3);
+        //    list.Add(4);
+        //    list.Add(5);
+        //    int expected = 5;
+        //    int actual;
+
+        //    //Act
+        //    list.Remove(2);
+        //    actual = list[3];
+
+        //    //Assert
+        //    Assert.AreEqual(expected, actual);
+        //}
 
     }
 }

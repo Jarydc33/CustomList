@@ -38,8 +38,26 @@ namespace ListProject
             count++;
         }
 
-        public void Remove(T item)
+        public bool Remove(T item)
         {
+            bool isTrue = false;
+
+            for(int i = 0; i < count; i++)
+            {
+                if (items[i].Equals(item))
+                {
+                    int j = i;
+                    do
+                    {
+                        items[j] = items[j + 1];
+                        j++;
+                    } while (j < count);
+                    count--;
+                    i--;
+                    isTrue = true;
+                }
+            }
+            return isTrue;
 
         }
 
@@ -51,12 +69,12 @@ namespace ListProject
                     throw new IndexOutOfRangeException("You can`t access that portion of the list!");
                 return items[index];
             }
-            //set
-            //{
-            //    if (index > count - 1 || index < 0)
-            //        throw new IndexOutOfRangeException("You can`t access that portion of the list!");
-            //    items[index] = value;
-            //}
+            set
+            {
+                if (index > count - 1 || index < 0)
+                    throw new IndexOutOfRangeException("You can`t access that portion of the list!");
+                items[index] = value;
+            }
         }
 
 
