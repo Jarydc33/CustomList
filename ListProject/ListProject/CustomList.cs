@@ -33,7 +33,7 @@ namespace ListProject
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
 
         public void Add(T item)
@@ -60,9 +60,9 @@ namespace ListProject
             count++;
         }
 
-        public bool Remove(T item)
+        public void Remove(T item)
         {
-            bool isTrue = false;
+            //bool isTrue = false;
 
             for(int i = 0; i < count; i++)
             {
@@ -76,10 +76,10 @@ namespace ListProject
                     } while (j < count);
                     count--;
                     i--;
-                    isTrue = true;
+                    //isTrue = true;
                 }
             }
-            return isTrue;
+           // return isTrue;
 
         }
 
@@ -100,15 +100,15 @@ namespace ListProject
         }
 
         public override string ToString()
-        {            
+        {       
+            
             for (int i = 0; i < count; i++)
             {
                 MyString += items[i];
                 //myStringBuilder.Append(items[i]);
             }
-            //myStringBuilder.ToString();
+
             return MyString;
-            //return myStringBuilder;    
 
         }
 
@@ -132,7 +132,7 @@ namespace ListProject
         {
             CustomList<T> newList = new CustomList<T>();
 
-            for(int i = 0; i < list2.count; i++)
+            for (int i = 0; i < list2.count; i++)
             {
                 list1.Remove(list2[i]);
             }
@@ -142,46 +142,29 @@ namespace ListProject
 
         public CustomList<T> Zip(CustomList<T> addList)
         {
-            int actualLength = 0;
-            int longer = 0;
-            int tester = 0;
             CustomList<T> newList = new CustomList<T>();
 
-            if (count == addList.count)
-            {
-                actualLength = addList.count;
-            }
-            else if (count > addList.count)
-            {
-                actualLength = addList.count;
-                longer = count - addList.count;
-                tester = 1;
-            }
-            else
-            {
-                actualLength = count;
-                longer = addList.count - count;
-                tester = 2;
-            }
-
-            for (int i = 0; i < actualLength; i++)
+            for (int i = 0; i < count && i < addList.count; i++)
             {
                 newList.Add(items[i]);
                 newList.Add(addList[i]);
-            }
-
-            if (tester == 1)
-            {
-                for (int i = longer+1; i < count; i++)
+                if(count != addList.count)
                 {
-                    newList.Add(items[i]);
-                }
-            }
-            else if (tester == 2)
-            {
-                for (int i = longer+1; i < addList.count; i++)
-                {
-                    newList.Add(addList[i]);
+                    if(i+1 == count)
+                    {
+                        for(int j = i+1; j< addList.count; j++)
+                        {
+                            newList.Add(addList[j]);
+                        }
+                        
+                    }
+                    else if(i+1 == addList.count)
+                    {
+                        for (int j = i+1; j < count; j++)
+                        {
+                            newList.Add(items[j]);
+                        }
+                    }
                 }
             }
 
