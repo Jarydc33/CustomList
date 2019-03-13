@@ -12,6 +12,8 @@ namespace ListProject
         int count;
         public int Count { get { return count; } }
         public int Capacity;
+        public string MyString { get; set; }
+        StringBuilder myStringBuilder = new StringBuilder(null);
 
         public CustomList()
         {
@@ -77,6 +79,30 @@ namespace ListProject
             }
         }
 
+        public override string ToString()
+        {            
+            for (int i = 0; i < count; i++)
+            {
+                MyString += items[i];
+                //myStringBuilder.Append(items[i]);
+            }
+            //myStringBuilder.ToString();
+            return MyString;
+            //return myStringBuilder;    
 
+        }
+
+    }
+
+    public class Test
+    {
+        public int score;
+        public string name;
+        
+        public Test(int newScore, string myName)
+        {
+            score = newScore;
+            name = myName;
+        }
     }
 }

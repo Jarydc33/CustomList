@@ -9,6 +9,25 @@ namespace ListProjectTest
     public class CustomListTest
     {
         [TestMethod]
+        public void Count_ReadOnly_IsReadOnly()
+        {
+            //Asign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(5);
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+            int expected = 4;
+            int actual;
+
+            //Act
+            actual = list.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void Add_EmptyArray_AddedToIndexZero()
         {
             //Asign
@@ -23,6 +42,40 @@ namespace ListProjectTest
 
             //Assert
             Assert.AreEqual(expected,actual);
+        }
+
+        [TestMethod]
+        public void Add_AddOneNewObject_AddedToIndexZero()
+        {
+            //Asign
+            CustomList<Test> list = new CustomList<Test>();
+            int expected = 10;
+            int actual; 
+
+            //Act
+            list.Add(new Test(10, "Jaryd"));
+            actual = list[0].score;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Add_AddMultipleNewObjects_AddedToIndexZero()
+        {
+            //Asign
+            CustomList<Test> list = new CustomList<Test>();
+            string expected = "Mike";
+            string actual;
+
+            //Act
+            list.Add(new Test(1,"Jaryd"));
+            list.Add(new Test(2, "Not Jaryd"));
+            list.Add(new Test(3, "Mike"));
+            actual = list[2].name;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -251,6 +304,72 @@ namespace ListProjectTest
         }
 
         [TestMethod]
+        public void Remove_RemoveFirstObject_AllIndexesShiftOnce()
+        {
+            //Asign
+            CustomList<Test> list = new CustomList<Test>();
+            Test test = new Test(1,"Jaryd");
+            list.Add(test);
+            list.Add(new Test(2, "Not Jaryd"));
+            list.Add(new Test(3, "Mike"));
+            string expected = "Not Jaryd";
+            string actual;
+
+            //Act
+            list.Remove(test);
+            actual = list[0].name;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Remove_RemoveSecondObject_AllIndexesShiftOnce()
+        {
+            //Asign
+            CustomList<Test> list = new CustomList<Test>();
+            Test test = new Test(1, "Jaryd");
+            
+            list.Add(new Test(2, "Not Jaryd"));
+            list.Add(test);
+            list.Add(new Test(3, "Mike"));
+            string expected = "Mike";
+            string actual;
+
+            //Act
+            list.Remove(test);
+            actual = list[1].name;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Remove_RemoveFifthObject_AllIndexesShiftOnce()
+        {
+            //Asign
+            CustomList<Test> list = new CustomList<Test>();
+            Test test = new Test(1, "Jaryd");
+
+            list.Add(new Test(2, "Not Jaryd"));
+            list.Add(new Test(3, "Mike"));
+            list.Add(new Test(10, "HI"));
+            list.Add(new Test(11, "NOHI"));
+            list.Add(test);
+            list.Add(new Test(12, "Bye"));
+            list.Add(new Test(13, "Jim"));
+            string expected = "Bye";
+            string actual;
+
+            //Act
+            list.Remove(test);
+            actual = list[4].name;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void Remove_RemoveItem_CounterDecrement()
         {
             //Assign
@@ -358,47 +477,68 @@ namespace ListProjectTest
             Assert.AreEqual(expected, actual);
         }
 
-        //[TestMethod]
-        //public void Remove_RemoveIndex_CapacityDecrement()
-        //{
-        //    //Assign
-        //    CustomList<int> list = new CustomList<int>();
-        //    list.Add(1);
-        //    list.Add(2);
-        //    list.Add(3);
-        //    list.Add(4);
-        //    list.Add(5);
-        //    int expected = 4;
-        //    int actual;
+        [TestMethod]
+        public void Remove_RemoveItemsNotNextToEachOther_IndexShiftsCorrectly()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(2);
+            list.Add(2);
+            int expected = 15;
+            int actual;
 
-        //    //Act
-        //    list.Remove(3);
-        //    actual = list.Capacity;
+            //Act
+            list.Remove(2);
+            list.Add(15);
+            actual = list[2];
 
-        //    //Assert
-        //    Assert.AreEqual(expected, actual);
-        //}
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
 
-        //[TestMethod]
-        //public void Remove_CheckFourthIndexAfterCapacityDecrement_IndexFourIsNotNull()
-        //{
-        //    //Assign
-        //    CustomList<int> list = new CustomList<int>();
-        //    list.Add(1);
-        //    list.Add(2);
-        //    list.Add(3);
-        //    list.Add(4);
-        //    list.Add(5);
-        //    int expected = 5;
-        //    int actual;
+        [TestMethod]
+        public void ToString_NotUsingStringBuilder_OneLongStringOfInts()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+            list.Add(5);
+            string expected = "12345";
+            string actual;
 
-        //    //Act
-        //    list.Remove(2);
-        //    actual = list[3];
+            //Act
+            actual = list.ToString();
 
-        //    //Assert
-        //    Assert.AreEqual(expected, actual);
-        //}
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ToString_NotUsingStringBuilder_OneLongStringOfStrings()
+        {
+            //Assign
+            CustomList<string> list = new CustomList<string>();
+            list.Add("1");
+            list.Add("2");
+            list.Add("3");
+            list.Add("4");
+            list.Add("JARYD");
+            string expected = "1234JARYD";
+            string actual;
+
+            //Act
+            actual = list.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
 
     }
 }
