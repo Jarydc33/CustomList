@@ -120,6 +120,51 @@ namespace ListProject
             return newList;
         }
 
+        public CustomList<T> Zip(CustomList<T> addList)
+        {
+            int actualLength = 0;
+            int longer = 0;
+            CustomList<T> newList = new CustomList<T>();
+
+            if (count == addList.count)
+            {
+                actualLength = addList.count;
+            }
+            else if (count > addList.count)
+            {
+                actualLength = addList.count;
+                longer = count - addList.count;
+            }
+            else
+            {
+                actualLength = count;
+                longer = addList.count - count;
+            }
+
+            for (int i = 0; i < actualLength; i++)
+            {
+                newList.Add(items[i]);
+                newList.Add(addList[i]);
+            }
+
+            if (longer == 1)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    newList.Add(items[i]);
+                }
+            }
+            else if (longer == 2)
+            {
+                for (int i = longer+1; i < addList.count; i++)
+                {
+                    newList.Add(addList[i]);
+                }
+            }
+
+            return newList;
+        }
+
     }
 
     public class Test
