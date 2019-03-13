@@ -563,7 +563,7 @@ namespace ListProjectTest
         }
 
         [TestMethod]
-        public void Overload_OverloadTwoTimes_ConcatLists()
+        public void Overload_OverloadPlusOperatorTwoTimes_ConcatLists()
         {
             //Assign
             CustomList<int> list = new CustomList<int>();
@@ -583,6 +583,83 @@ namespace ListProjectTest
             //Act
             result = list3 + list2;
             actual = result[8];
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Overload_OverloadMinusOperator_SubtractLists()
+        {
+            //Assign
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> result = new CustomList<int>();
+            list1.Add(1);
+            list1.Add(3);
+            list1.Add(5);
+            list2.Add(2);
+            list2.Add(1);
+            list2.Add(6);
+            int expected = 3;
+            int actual;
+
+            //Act
+            result = list1 - list2;
+            actual = result[0];
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Overload_OverloadMinusOperatorTwoTimes_SubtractLists()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list3 = new CustomList<int>();
+            CustomList<int> result = new CustomList<int>();
+            list.Add(1);
+            list.Add(3);
+            list.Add(5);
+            list2.Add(2);
+            list2.Add(1);
+            list2.Add(6);
+            int expected = 3;
+            int actual;
+            list3 = list - list2;
+            list2.Add(5);
+
+            //Act
+            result = list3 - list2;
+            actual = result[0];
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void Overload_AccessOutOfRangeAfterMinus_SubtractLists()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list3 = new CustomList<int>();
+            CustomList<int> result = new CustomList<int>();
+            list.Add(1);
+            list.Add(3);
+            list.Add(5);
+            list2.Add(2);
+            list2.Add(1);
+            list2.Add(6);
+            int expected = 3;
+            int actual;
+            list3 = list - list2;
+            list2.Add(5);
+
+            //Act
+            result = list3 - list2;
+            actual = result[1];
+
             //Assert
             Assert.AreEqual(expected, actual);
         }

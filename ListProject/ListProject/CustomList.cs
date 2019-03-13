@@ -108,6 +108,18 @@ namespace ListProject
             return newList;
         }
 
+        public static CustomList<T> operator -(CustomList<T> list1, CustomList<T> list2)
+        {
+            CustomList<T> newList = new CustomList<T>();
+
+            for(int i = 0; i < list2.count; i++)
+            {
+                list1.Remove(list2[i]);
+            }
+            newList = list1;
+            return newList;
+        }
+
     }
 
     public class Test
