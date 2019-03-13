@@ -539,6 +539,29 @@ namespace ListProjectTest
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void Overload_OverloadPlusOperator_ConcatLists()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> result = new CustomList<int>();
+            list.Add(1);
+            list.Add(3);
+            list.Add(5);
+            list2.Add(2);
+            list2.Add(4);
+            list2.Add(6);
+            CustomList<int> expected = new CustomList<int>();
+            CustomList<int> actual = new CustomList<int>();
+
+            //Act
+            result = list + list2;
+            actual = result;
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
 
     }
 }
