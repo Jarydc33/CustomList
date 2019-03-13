@@ -1,0 +1,44 @@
+CustomList Documentation
+
+CustomList<T> - operator overload takes in two CustomList<T>`s as parameters and removes list2 indexed items from list1 if there are any instances of of it.
+The method calls the .Remove method to look for specific data and, if it is there, remove it. If it is not in list1, nothing happens and it moves to the next indexed item in list2.
+
+Syntax:
+public static CustomList<T> operator -(CustomList<T> list1, CustomList<T> list2)
+{
+
+}
+
+Parameters:
+CustomList<T> list1
+This is the list which will have items removed.
+
+CustomList<T> list2
+This is the list which will be subtracted from list1
+
+Return Type:
+This method returns the first parameter which is of type CustomList<T> after the appropriate data has been removed.
+
+Example:
+
+CustomList<T> newList = new CustomList<T>():
+list.Add(1); //Index 0
+list.Add(2); //Index 1
+list.Remove(1);
+
+public static CustomList<T> operator -(CustomList<T> list1, CustomList<T> list2)
+{
+        for (int i = 0; i < list2.count; i++)
+        {
+            list1.Remove(list2[i]);
+        }
+        return list1;
+}
+
+Console.WriteLine(list[0]);
+
+//OUTPUT: This will output 2 to the console because the inexes shift over to the left after the number in 
+//index 0 was removed.
+
+
+

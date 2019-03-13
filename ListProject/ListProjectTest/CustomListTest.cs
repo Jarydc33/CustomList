@@ -282,27 +282,6 @@ namespace ListProjectTest
 
         }
 
-        //[TestMethod]
-        //public void Remove_RemoveItem_ReturnsTrue()
-        //{
-        //    //Assign
-        //    CustomList<int> list = new CustomList<int>();
-        //    list.Add(1);
-        //    list.Add(2);
-        //    list.Add(3);
-        //    list.Add(4);
-        //    list.Add(5);
-        //    bool expected = true;
-        //    bool actual;
-
-        //    //Act
-        //    actual = list.Remove(1);
-
-        //    //Assert
-        //    Assert.AreEqual(expected, actual);
-
-        //}
-
         [TestMethod]
         public void Remove_RemoveFirstObject_AllIndexesShiftOnce()
         {

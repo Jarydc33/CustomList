@@ -62,7 +62,6 @@ namespace ListProject
 
         public void Remove(T item)
         {
-            //bool isTrue = false;
 
             for(int i = 0; i < count; i++)
             {
@@ -76,10 +75,8 @@ namespace ListProject
                     } while (j < count);
                     count--;
                     i--;
-                    //isTrue = true;
                 }
             }
-           // return isTrue;
 
         }
 
@@ -105,7 +102,6 @@ namespace ListProject
             for (int i = 0; i < count; i++)
             {
                 MyString += items[i];
-                //myStringBuilder.Append(items[i]);
             }
 
             return MyString;
@@ -137,7 +133,7 @@ namespace ListProject
                 list1.Remove(list2[i]);
             }
             newList = list1;
-            return newList;
+            return list1;
         }
 
         public CustomList<T> Zip(CustomList<T> addList)
