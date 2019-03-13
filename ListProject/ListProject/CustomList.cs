@@ -14,7 +14,6 @@ namespace ListProject
         public int Count { get { return count; } }
         public int Capacity;
         public string MyString { get; set; }
-        //StringBuilder myStringBuilder = new StringBuilder(null);
 
         public CustomList()
         {
@@ -43,12 +42,6 @@ namespace ListProject
             {
                 Capacity += 4;
                 T[] tempArray = new T[Capacity];
-
-                //foreach (T stuff in items)
-                //{
-                //    tempArray = items;
-                //}
-                //items = tempArray;
                 for (int i = 0; i < count; i++)
                 {
                     tempArray[i] = items[i];
@@ -126,13 +119,10 @@ namespace ListProject
 
         public static CustomList<T> operator -(CustomList<T> list1, CustomList<T> list2)
         {
-            CustomList<T> newList = new CustomList<T>();
-
             for (int i = 0; i < list2.count; i++)
             {
                 list1.Remove(list2[i]);
             }
-            newList = list1;
             return list1;
         }
 
@@ -165,6 +155,23 @@ namespace ListProject
             }
 
             return newList;
+        }
+
+        public void Sort()
+        {
+           
+            for(int i = 0; i < count - 1; i++)
+            {
+                for(int j = i + 1; j > 0; j--)
+                {
+                    if(items[j-1].CompareTo(items[j]))
+                    {
+                        int temp = (items[j - 1];
+                        items[j - 1] = items[j];
+                        items[j] = temp;
+                    }
+                }
+            }
         }
                 
     }
