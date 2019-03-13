@@ -13,7 +13,7 @@ namespace ListProject
         public int Count { get { return count; } }
         public int Capacity;
         public string MyString { get; set; }
-        StringBuilder myStringBuilder = new StringBuilder(null);
+        //StringBuilder myStringBuilder = new StringBuilder(null);
 
         public CustomList()
         {
@@ -90,6 +90,22 @@ namespace ListProject
             return MyString;
             //return myStringBuilder;    
 
+        }
+
+        public static CustomList<T> operator +(CustomList<T> list1, CustomList<T> list2)
+        {
+            CustomList<T> newList = new CustomList<T>();
+
+            for(int i = 0; i < list1.count; i++)
+            {
+                newList.Add(list1[i]);
+            }
+            for(int i = 0; i < list2.count; i++)
+            {
+                newList.Add(list2[i]);
+            }
+
+            return newList;
         }
 
     }
