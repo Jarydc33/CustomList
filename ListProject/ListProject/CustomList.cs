@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ListProject
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable<T>
     {
         T[] items;
         int count;
@@ -22,6 +23,19 @@ namespace ListProject
             Capacity = 0;
         }
         
+        public IEnumerator<T> GetEnumerator()
+        {
+            for(int index = 0; index < count; index++)
+            {
+                yield return items[index];
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Add(T item)
         {
             
@@ -29,7 +43,13 @@ namespace ListProject
             {
                 Capacity += 4;
                 T[] tempArray = new T[Capacity];
-                for(int i = 0; i < count; i++)
+
+                //foreach (T stuff in items)
+                //{
+                //    tempArray = items;
+                //}
+                //items = tempArray;
+                for (int i = 0; i < count; i++)
                 {
                     tempArray[i] = items[i];
                 }
@@ -124,6 +144,7 @@ namespace ListProject
         {
             int actualLength = 0;
             int longer = 0;
+            int tester = 0;
             CustomList<T> newList = new CustomList<T>();
 
             if (count == addList.count)
@@ -134,11 +155,13 @@ namespace ListProject
             {
                 actualLength = addList.count;
                 longer = count - addList.count;
+                tester = 1;
             }
             else
             {
                 actualLength = count;
                 longer = addList.count - count;
+                tester = 2;
             }
 
             for (int i = 0; i < actualLength; i++)
@@ -147,14 +170,14 @@ namespace ListProject
                 newList.Add(addList[i]);
             }
 
-            if (longer == 1)
+            if (tester == 1)
             {
-                for (int i = 0; i < count; i++)
+                for (int i = longer+1; i < count; i++)
                 {
                     newList.Add(items[i]);
                 }
             }
-            else if (longer == 2)
+            else if (tester == 2)
             {
                 for (int i = longer+1; i < addList.count; i++)
                 {
@@ -164,7 +187,7 @@ namespace ListProject
 
             return newList;
         }
-
+                
     }
 
     public class Test

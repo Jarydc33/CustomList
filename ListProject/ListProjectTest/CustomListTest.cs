@@ -716,6 +716,33 @@ namespace ListProjectTest
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void Zip_TwoListsUnequalLengthOtherList_ListBleedoffToEnd()
+        {
+            //Asign
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> result = new CustomList<int>();
+            list1.Add(1);
+            list1.Add(3);
+            list1.Add(5);
+            list1.Add(2);
+            list1.Add(4);
+            list2.Add(6);
+            list2.Add(8);
+            list2.Add(10);
+            int expected = 4;
+            int actual;
+
+            //Act
+            result = list1.Zip(list2);
+
+            actual = result[7];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
 
 
     }
