@@ -181,18 +181,25 @@ namespace ListProject
             CustomList<T> tempList = new CustomList<T>();
             tempList.Add(items[0]);
             int value;
-            for(int i = 0; i < count - 1; i++) 
+
+            try
             {
-                for(int j = i + 1; j > 0; j--)
+                for (int i = 0; i < count - 1; i++)
                 {
-                    value = comparer.Compare(items[j - 1], items[j]);
-                    if(value > 0)
+                    for (int j = i + 1; j > 0; j--)
                     {
-                        tempList[0] = items[j - 1];
-                        items[j - 1] = items[j];
-                        items[j] = tempList[0];
+                        value = comparer.Compare(items[j - 1], items[j]);
+                        if (value > 0)
+                        {
+                            tempList[0] = items[j - 1];
+                            items[j - 1] = items[j];
+                            items[j] = tempList[0];
+                        }
                     }
                 }
+            }
+            catch (ArgumentException){
+                Console.WriteLine("At least one of your items must be IComparable.");
             }
         }
     }        
