@@ -10,26 +10,43 @@ namespace ListProject
     {
         static void Main(string[] args)
         {
-            CustomList<string> list1 = new CustomList<string>();
-            CustomList<string> list2 = new CustomList<string>();
-            CustomList<string> result = new CustomList<string>();
+            CustomList<int> list1 = new CustomList<int>();
 
-            list1.Add("JAryd.");
-            list1.Add("3");
-            list1.Add("5");
-            list1.Add("7");
-            list2.Add("3");
-            list2.Add("4");
-            list2.Add("JAryd");
-            list2.Add("JAryd");
-            list2.Add("JAryd");
-            list2.Add("JAryd");
-            list2.Add("JAryd");
-            list2.Add("JAryd");
+            list1.Add(1);
+            list1.Add(3);
+            list1.Add(5);
+            list1.Add(2);
+            list1.Add(4);
+            list1.Add(6);
+            list1.Add(8);
+            list1.Add(5);
+            list1.Add(1);
+            list1.Add(3);
+            list1.Add(5);
+            list1.Add(2);
+            list1.Add(4);
+            list1.Add(6);
+            list1.Add(8);
+            list1.Add(5);
+            list1.Add(99);
+            list1.Add(3);
+            list1.Add(5);
+            list1.Add(2);
+            list1.Add(4);
+            list1.Add(6);
+            list1.Add(47);
+            list1.Add(50);
+            list1.Add(1);
+            list1.Add(3);
+            list1.Add(5);
+            list1.Add(67);
+            list1.Add(971);
+            list1.Add(6);
+            list1.Add(8);
+            list1.Add(5);
 
-            result = list1.Zip(list2);
-
-            Console.WriteLine(result);
+            list1.Sort();
+            Console.WriteLine(list1 + ",");
             Console.ReadLine();
 
         }

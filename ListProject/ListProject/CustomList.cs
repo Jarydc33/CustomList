@@ -157,10 +157,11 @@ namespace ListProject
             return newList;
         }
 
-        public void Sort() 
+        public void Sort() //Insertion Sort
         {
             var comparer = Comparer<T>.Default;
             CustomList<T> tempList = new CustomList<T>();
+            tempList.Add(items[0]);
             int value;
             for(int i = 0; i < count - 1; i++) 
             {
@@ -170,7 +171,7 @@ namespace ListProject
                     value = comparer.Compare(items[j - 1], items[j]);
                     if(value > 0)
                     {
-                        tempList.Add(items[j - 1]);
+                        tempList[0] = items[j - 1];
                         items[j - 1] = items[j];
                         items[j] = tempList[0];
                     }

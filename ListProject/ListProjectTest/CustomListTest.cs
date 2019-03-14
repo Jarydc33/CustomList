@@ -723,11 +723,10 @@ namespace ListProjectTest
         }
 
         [TestMethod]
-        public void Sort_SortListAlphaNumerically_IndexedCorrectly()
+        public void Sort_SortListNumerically_IndexedCorrectly()
         {
             //Asign
             CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> result = new CustomList<int>();
             list1.Add(1);
             list1.Add(3);
             list1.Add(5);
@@ -736,7 +735,7 @@ namespace ListProjectTest
             list1.Add(8);
             list1.Add(6);
             list1.Add(10);
-            int expected = 8;
+            int expected = 3;
             int actual;
 
             //Act
@@ -762,7 +761,7 @@ namespace ListProjectTest
             list1.Add(8);
             list1.Add(6);
             list1.Add(10);
-            int expected = 8;
+            int expected = 4;
             int actual;
 
             //Act
@@ -780,21 +779,21 @@ namespace ListProjectTest
             //Asign
             CustomList<string> list1 = new CustomList<string>();
             CustomList<string> result = new CustomList<string>();
-            list1.Add("1");
-            list1.Add("3");
-            list1.Add("5");
-            list1.Add("2");
-            list1.Add("4");
-            list1.Add("8");
-            list1.Add("6");
-            list1.Add("10");
-            string expected = "8";
+            list1.Add("X");
+            list1.Add("J");
+            list1.Add("Z");
+            list1.Add("A");
+            list1.Add("F");
+            list1.Add("K");
+            list1.Add("R");
+            list1.Add("R");
+            string expected = "Z";
             string actual;
 
             //Act
             list1.Sort();
 
-            actual = list1[2];
+            actual = list1[7];
 
             //Assert
             Assert.AreEqual(expected, actual);
