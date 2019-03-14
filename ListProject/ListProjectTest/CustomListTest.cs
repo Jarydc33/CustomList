@@ -58,6 +58,8 @@ namespace ListProjectTest
 
             //Assert
             Assert.AreEqual(expected, actual);
+
+
         }
 
         [TestMethod]
@@ -180,6 +182,7 @@ namespace ListProjectTest
         [ExpectedException(typeof(IndexOutOfRangeException))]
         public void Indexer_SetIndexTooHigh_OutOfRange()
         {
+            // Assign
             CustomList<int> list = new CustomList<int>();
             list.Add(1);
             list.Add(1);
@@ -187,6 +190,7 @@ namespace ListProjectTest
             list.Add(1);
             list.Add(1);
 
+            //Act
             list[5] = 19;
 
         }
@@ -537,6 +541,7 @@ namespace ListProjectTest
             //Act
             result = list + list2;
             actual = result[5];
+
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -562,6 +567,7 @@ namespace ListProjectTest
             //Act
             result = list3 + list2;
             actual = result[8];
+
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -585,6 +591,7 @@ namespace ListProjectTest
             //Act
             result = list1 - list2;
             actual = result[0];
+
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -611,6 +618,7 @@ namespace ListProjectTest
             //Act
             result = list3 - list2;
             actual = result[0];
+
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -661,6 +669,7 @@ namespace ListProjectTest
 
             //Act
             result = list1.Zip(list2);
+
             //result = list1;
             actual = result[3];
 
@@ -688,7 +697,6 @@ namespace ListProjectTest
 
             //Act
             result = list1.Zip(list2);
-           
             actual = result[7];
 
             //Assert
@@ -715,7 +723,6 @@ namespace ListProjectTest
 
             //Act
             result = list1.Zip(list2);
-
             actual = result[7];
 
             //Assert
@@ -740,7 +747,6 @@ namespace ListProjectTest
 
             //Act
             list1.Sort();
-
             actual = list1[2];
 
             //Assert
@@ -766,7 +772,6 @@ namespace ListProjectTest
 
             //Act
             list1.Sort();
-
             actual = list1[2];
 
             //Assert
@@ -792,12 +797,23 @@ namespace ListProjectTest
 
             //Act
             list1.Sort();
-
             actual = list1[7];
 
             //Assert
             Assert.AreEqual(expected, actual);
         }
 
+    }
+    //This class is here to test the functionality of adding and removing objects
+    public class Test
+    {
+        public int score;
+        public string name;
+
+        public Test(int newScore, string myName)
+        {
+            score = newScore;
+            name = myName;
+        }
     }
 }

@@ -150,21 +150,6 @@ namespace ListProject
 
                     ZipUnequalLists(count,i,addList,newList);
                     ZipUnequalLists(addList.count,i,this,newList);
-                    //if(i+1 == count)
-                    //{
-                    //    for(int j = i+1; j< addList.count; j++)
-                    //    {
-                    //        newList.Add(addList[j]);
-                    //    }
-                        
-                    //}
-                    //else if(i+1 == addList.count)
-                    //{
-                    //    for (int j = i+1; j < count; j++)
-                    //    {
-                    //        newList.Add(items[j]);
-                    //    }
-                    //}
                 }
             }
 
@@ -191,7 +176,6 @@ namespace ListProject
             int value;
             for(int i = 0; i < count - 1; i++) 
             {
-
                 for(int j = i + 1; j > 0; j--)
                 {
                     value = comparer.Compare(items[j - 1], items[j]);
