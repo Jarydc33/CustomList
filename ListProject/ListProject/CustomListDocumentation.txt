@@ -1,4 +1,4 @@
-CustomList Documentation
+﻿CustomList Documentation
 
 CustomList<T> - operator overload takes in two CustomList<T>`s as parameters and removes subtractList indexed items from baseList if there are any instances of it.
 The method calls the .Remove method to look for specific data and, if it is there, remove it. If it is not in baseList, nothing happens and it moves to the next indexed item in subtractList. 
