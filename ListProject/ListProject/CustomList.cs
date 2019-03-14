@@ -36,24 +36,33 @@ namespace ListProject
         }
 
         public void Add(T item)
-        {
-            
-            if(items.Length == count)
-            {
-                Capacity += 4;
-                T[] tempArray = new T[Capacity];
-                for (int i = 0; i < count; i++)
-                {
-                    tempArray[i] = items[i];
-                }
-                items = tempArray;
-            }
-            
+        { 
+            CapacityIncrementer();
+
             items[count] = item;
             count++;
         }
 
-        public void Remove(T item)
+        private void CapacityIncrementer()
+        {
+            if (items.Length == count)
+            {
+                Capacity += 4;
+                CreateBiggerArray();
+            }
+        } 
+
+        private void CreateBiggerArray()
+        {
+            T[] tempArray = new T[Capacity];
+            for (int i = 0; i < count; i++)
+            {
+                tempArray[i] = items[i];
+            }
+            items = tempArray;
+        } 
+
+        public void Remove(T item) //maybe change?
         {
 
             for(int i = 0; i < count; i++)
@@ -79,12 +88,14 @@ namespace ListProject
             {
                 if (index > count - 1 || index < 0)
                     throw new IndexOutOfRangeException("You can`t access that portion of the list!");
+
                 return items[index];
             }
             set
             {
                 if (index > count - 1 || index < 0)
                     throw new IndexOutOfRangeException("You can`t access that portion of the list!");
+
                 items[index] = value;
             }
         }
