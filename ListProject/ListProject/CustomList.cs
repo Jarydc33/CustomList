@@ -13,7 +13,7 @@ namespace ListProject
         int count;
         public int Count { get { return count; } }
         public int Capacity;
-        public string MyString { get; set; }
+        public string MyString;
 
         public CustomList()
         {
@@ -90,8 +90,8 @@ namespace ListProject
         }
 
         public override string ToString()
-        {       
-            
+        {
+            MyString = null;
             for (int i = 0; i < count; i++)
             {
                 MyString += items[i];
@@ -157,23 +157,26 @@ namespace ListProject
             return newList;
         }
 
-        public void Sort()
+        public void Sort() 
         {
-           
-            for(int i = 0; i < count - 1; i++)
+            var comparer = Comparer<T>.Default;
+            CustomList<T> tempList = new CustomList<T>();
+            int value;
+            for(int i = 0; i < count - 1; i++) 
             {
+
                 for(int j = i + 1; j > 0; j--)
                 {
-                    if(items[j-1].CompareTo(items[j]))
+                    value = comparer.Compare(items[j - 1], items[j]);
+                    if(value > 0)
                     {
-                        int temp = (items[j - 1];
+                        tempList.Add(items[j - 1]);
                         items[j - 1] = items[j];
-                        items[j] = temp;
+                        items[j] = tempList[0];
                     }
                 }
             }
         }
-                
     }
 
     public class Test

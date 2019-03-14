@@ -722,7 +722,83 @@ namespace ListProjectTest
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void Sort_SortListAlphaNumerically_IndexedCorrectly()
+        {
+            //Asign
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> result = new CustomList<int>();
+            list1.Add(1);
+            list1.Add(3);
+            list1.Add(5);
+            list1.Add(2);
+            list1.Add(4);
+            list1.Add(8);
+            list1.Add(6);
+            list1.Add(10);
+            int expected = 8;
+            int actual;
 
+            //Act
+            list1.Sort();
+
+            actual = list1[2];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Sort_SortListWithTwoEqualNumbers_IndexedCorrectly()
+        {
+            //Asign
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> result = new CustomList<int>();
+            list1.Add(1);
+            list1.Add(3);
+            list1.Add(5);
+            list1.Add(5);
+            list1.Add(4);
+            list1.Add(8);
+            list1.Add(6);
+            list1.Add(10);
+            int expected = 8;
+            int actual;
+
+            //Act
+            list1.Sort();
+
+            actual = list1[2];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Sort_SortListOtherThanInt_IndexedCorrectly()
+        {
+            //Asign
+            CustomList<string> list1 = new CustomList<string>();
+            CustomList<string> result = new CustomList<string>();
+            list1.Add("1");
+            list1.Add("3");
+            list1.Add("5");
+            list1.Add("2");
+            list1.Add("4");
+            list1.Add("8");
+            list1.Add("6");
+            list1.Add("10");
+            string expected = "8";
+            string actual;
+
+            //Act
+            list1.Sort();
+
+            actual = list1[2];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
 
     }
 }
