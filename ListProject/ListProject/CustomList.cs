@@ -144,24 +144,44 @@ namespace ListProject
             return newList;
         }
 
-        public CustomList<T> Zip(CustomList<T> addList)
+        public static CustomList<T> Zip(CustomList<T> zipList, CustomList<T> zipList2)
         {
             CustomList<T> newList = new CustomList<T>();
 
-            for (int i = 0; i < count && i < addList.count; i++)
+            for (int i = 0; i < zipList.count && i < zipList2.count; i++)
             {
-                newList.Add(items[i]);
-                newList.Add(addList[i]);
-                if(count != addList.count)
+                newList.Add(zipList[i]);
+                newList.Add(zipList2[i]);
+                if(zipList.count != zipList2.count)
                 {
 
-                    ZipUnequalLists(count,i,addList,newList);
-                    ZipUnequalLists(addList.count,i,this,newList);
+                    zipList.ZipUnequalLists(zipList.count,i,zipList2,newList);
+                    zipList2.ZipUnequalLists(zipList2.count,i,zipList,newList);
                 }
             }
 
             return newList;
         }
+
+        //public CustomList<T> Zip(CustomList<T> addList)
+        //{
+        //    CustomList<T> newList = new CustomList<T>();
+
+        //    for (int i = 0; i < count && i < addList.count; i++)
+        //    {
+        //        newList.Add(items[i]);
+        //        newList.Add(addList[i]);
+        //        if (count != addList.count)
+        //        {
+
+        //            ZipUnequalLists(count, i, addList, newList);
+        //            ZipUnequalLists(addList.count, i, this, newList);
+        //        }
+        //    }
+
+        //    return newList;
+        //}
+
 
         private void ZipUnequalLists(int countSize, int counter,CustomList<T> zippedList,CustomList<T> newList)
         {

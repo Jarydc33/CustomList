@@ -668,7 +668,7 @@ namespace ListProjectTest
             int actual;
 
             //Act
-            result = list1.Zip(list2);
+            result = CustomList<int>.Zip(list1, list2);
 
             //result = list1;
             actual = result[3];
@@ -696,7 +696,7 @@ namespace ListProjectTest
             int actual;
 
             //Act
-            result = list1.Zip(list2);
+            result = CustomList<int>.Zip(list1, list2);
             actual = result[7];
 
             //Assert
@@ -722,7 +722,33 @@ namespace ListProjectTest
             int actual;
 
             //Act
-            result = list1.Zip(list2);
+            result = CustomList<int>.Zip(list1, list2);
+            actual = result[7];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Zip_TwoListsUnequalLengthString_ListBleedoffToEnd()
+        {
+            //Asign
+            CustomList<string> list1 = new CustomList<string>();
+            CustomList<string> list2 = new CustomList<string>();
+            CustomList<string> result = new CustomList<string>();
+            list1.Add("Jaryd");
+            list1.Add("the");
+            list1.Add("person");
+            list1.Add("you");
+            list1.Add("know");
+            list2.Add("is");
+            list2.Add("best");
+            list2.Add("that");
+            string expected = "know";
+            string actual;
+
+            //Act
+            result = CustomList<string>.Zip(list1, list2);
             actual = result[7];
 
             //Assert
