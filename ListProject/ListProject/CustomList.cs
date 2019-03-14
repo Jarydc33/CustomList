@@ -62,7 +62,7 @@ namespace ListProject
             items = tempArray;
         } 
 
-        public void Remove(T item) //maybe change?
+        public void Remove(T item)
         {
 
             for(int i = 0; i < count; i++)
@@ -74,7 +74,7 @@ namespace ListProject
                     {
                         items[j] = items[j + 1];
                         j++;
-                    } while (j < count);
+                    } while (j < count-1); //check this
                     count--;
                     i--;
                 }
@@ -130,11 +130,18 @@ namespace ListProject
 
         public static CustomList<T> operator -(CustomList<T> baseList, CustomList<T> subtractList)
         {
+            CustomList<T> newList = new CustomList<T>();
+
+            for(int i = 0; i < baseList.count; i++)
+            {
+                newList.Add(baseList[i]);
+            }
+
             for (int i = 0; i < subtractList.count; i++)
             {
-                baseList.Remove(subtractList[i]);
+                newList.Remove(subtractList[i]);
             }
-            return baseList;
+            return newList;
         }
 
         public CustomList<T> Zip(CustomList<T> addList)
