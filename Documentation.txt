@@ -1,7 +1,7 @@
 CustomList Documentation
 
-CustomList<T> - operator overload takes in two CustomList<T>`s as parameters and removes list2 indexed items from list1 if there are any instances of it.
-The method calls the .Remove method to look for specific data and, if it is there, remove it. If it is not in list1, nothing happens and it moves to the next indexed item in list2. 
+CustomList<T> - operator overload takes in two CustomList<T>`s as parameters and removes subtractList indexed items from baseList if there are any instances of it.
+The method calls the .Remove method to look for specific data and, if it is there, remove it. If it is not in baseList, nothing happens and it moves to the next indexed item in subtractList. 
 Note that the initial parameter lists do not change. The only list that is being adjusted is the list to the left of the = operator.
 
 Syntax:
@@ -9,10 +9,13 @@ list3 = list2 - list1;
 
 Parameters:
 CustomList<T> list1
-This is the list which will have items removed.
+This is the list which will be checked for items from list2
 
 CustomList<T> list2
-This is the list which will be subtracted from list1
+This is the list which will be used to determine what should be removed from list1
+
+CustomList<T> list3
+This is the list which will be altered and have the result of list2 and list1
 
 Return Type:
 This method returns the first parameter which is of type CustomList<T> after the appropriate data has been removed.
@@ -32,19 +35,19 @@ newList2.Add(3);
 
 newList3 = newList1 - newList2;
 
-public static CustomList<T> operator -(CustomList<T> list1, CustomList<T> list2)
+public static CustomList<T> operator -(CustomList<T> baseList, CustomList<T> subtractList)
 { 
      
 }
 
 Console.WriteLine(newList3);
-//
+//This list now contains 1 and 4
 
 Console.WriteLine(newList2);
-//
+//This list still contains 2 and 3
 
 Console.WriteLine(newList1);
-//OUTPUT:
+//This list still contains 1, 2, 3, and 4
 
 
 
