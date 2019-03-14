@@ -177,17 +177,5 @@ namespace ListProject
                 }
             }
         }
-    }
-
-    public class Test
-    {
-        public int score;
-        public string name;
-        
-        public Test(int newScore, string myName)
-        {
-            score = newScore;
-            name = myName;
-        }
-    }
+    }        
 }

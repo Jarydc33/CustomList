@@ -479,7 +479,7 @@ namespace ListProjectTest
         }
 
         [TestMethod]
-        public void ToString_NotUsingStringBuilder_OneLongStringOfInts()
+        public void ToString_StringifyUsingInts_OneLongStringOfInts()
         {
             //Assign
             CustomList<int> list = new CustomList<int>();
@@ -499,7 +499,7 @@ namespace ListProjectTest
         }
 
         [TestMethod]
-        public void ToString_NotUsingStringBuilder_OneLongStringOfStrings()
+        public void ToString_StringifyMultipleStrings_OneLongStringOfStrings()
         {
             //Assign
             CustomList<string> list = new CustomList<string>();

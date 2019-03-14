@@ -10,20 +10,35 @@ namespace ListProject
     {
         static void Main(string[] args)
         {
-            CustomList<int> list = new CustomList<int>();
-            string myString;
+            CustomList<string> list1 = new CustomList<string>();
+            CustomList<string> list2 = new CustomList<string>();
+            CustomList<string> result = new CustomList<string>();
 
-            list.Add(1);
-            list.Add(9);
-            list.Add(2);
-            list.Add(5);
-            list.Add(6);
-            list.Add(3);
+            list1.Add("JAryd.");
+            list1.Add("3");
+            list1.Add("5");
+            list1.Add("7");
+            list2.Add("3");
+            list2.Add("4");
+            list2.Add("JAryd");
 
-            myString = list.ToString();
-            Console.Write(list);
-            
+            result = list2 - list1;
 
+            Console.WriteLine(list1);
+            Console.ReadLine();
+
+        }
+    }
+
+    public class Test
+    {
+        public int score;
+        public string name;
+
+        public Test(int newScore, string myName)
+        {
+            score = newScore;
+            name = myName;
         }
     }
 }
