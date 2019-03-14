@@ -12,14 +12,15 @@ namespace ListProject
         T[] items;
         int count;
         public int Count { get { return count; } }
-        public int Capacity;
+        private int capacity;
+        public int Capacity { get { return capacity; } }
         public string MyString;
 
         public CustomList()
         {
             items = new T[0];
             count = 0;
-            Capacity = 0;
+            capacity = 0;
         }
         
         public IEnumerator<T> GetEnumerator()
@@ -47,14 +48,14 @@ namespace ListProject
         {
             if (items.Length == count)
             {
-                Capacity += 4;
+                capacity += 4;
                 CreateBiggerArray();
             }
         } 
 
         private void CreateBiggerArray()
         {
-            T[] tempArray = new T[Capacity];
+            T[] tempArray = new T[capacity];
             for (int i = 0; i < count; i++)
             {
                 tempArray[i] = items[i];
@@ -163,26 +164,6 @@ namespace ListProject
             return newList;
         }
 
-        //public CustomList<T> Zip(CustomList<T> addList)
-        //{
-        //    CustomList<T> newList = new CustomList<T>();
-
-        //    for (int i = 0; i < count && i < addList.count; i++)
-        //    {
-        //        newList.Add(items[i]);
-        //        newList.Add(addList[i]);
-        //        if (count != addList.count)
-        //        {
-
-        //            ZipUnequalLists(count, i, addList, newList);
-        //            ZipUnequalLists(addList.count, i, this, newList);
-        //        }
-        //    }
-
-        //    return newList;
-        //}
-
-
         private void ZipUnequalLists(int countSize, int counter,CustomList<T> zippedList,CustomList<T> newList)
         {
             if (counter + 1 == countSize)
@@ -202,24 +183,18 @@ namespace ListProject
             tempList.Add(items[0]);
             int value;
 
-            try
+            for (int i = 0; i < count - 1; i++)
             {
-                for (int i = 0; i < count - 1; i++)
+                for (int j = i + 1; j > 0; j--)
                 {
-                    for (int j = i + 1; j > 0; j--)
+                    value = comparer.Compare(items[j - 1], items[j]);
+                    if (value > 0)
                     {
-                        value = comparer.Compare(items[j - 1], items[j]);
-                        if (value > 0)
-                        {
-                            tempList[0] = items[j - 1];
-                            items[j - 1] = items[j];
-                            items[j] = tempList[0];
-                        }
+                        tempList[0] = items[j - 1];
+                        items[j - 1] = items[j];
+                        items[j] = tempList[0];
                     }
                 }
-            }
-            catch (ArgumentException){
-                Console.WriteLine("At least one of your items must be IComparable.");
             }
         }
     }        

@@ -483,6 +483,48 @@ namespace ListProjectTest
         }
 
         [TestMethod]
+        public void Remove_RemoveItemNotInIndex_CountDoesntChange()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(2);
+            list.Add(2);
+            int expected = 5;
+            int actual;
+
+            //Act
+            list.Remove(50);
+            actual = list.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Remove_RemoveItemNotInIndex_IndexDoesntChange()
+        {
+            //Assign
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(8);
+            list.Add(3);
+            list.Add(9);
+            list.Add(2);
+            int expected = 2;
+            int actual;
+
+            //Act
+            list.Remove(50);
+            actual = list[4];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void ToString_StringifyUsingInts_OneLongStringOfInts()
         {
             //Assign
@@ -829,6 +871,18 @@ namespace ListProjectTest
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Sort_SortObject_ThrowException()
+        {
+            //Asign
+            CustomList<Test> list1 = new CustomList<Test>();
+            list1.Add(new Test(10, "Jaryd"));
+            list1.Add(new Test(11, "Jaryd1"));
+
+            //Act
+            list1.Sort();
+        }
     }
     //This class is here to test the functionality of adding and removing objects
     public class Test
