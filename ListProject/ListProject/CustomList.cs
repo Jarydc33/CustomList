@@ -128,13 +128,13 @@ namespace ListProject
             return newList;
         }
 
-        public static CustomList<T> operator -(CustomList<T> list1, CustomList<T> list2)
+        public static CustomList<T> operator -(CustomList<T> baseList, CustomList<T> subtractList)
         {
-            for (int i = 0; i < list2.count; i++)
+            for (int i = 0; i < subtractList.count; i++)
             {
-                list1.Remove(list2[i]);
+                baseList.Remove(subtractList[i]);
             }
-            return list1;
+            return baseList;
         }
 
         public CustomList<T> Zip(CustomList<T> addList)
@@ -147,25 +147,40 @@ namespace ListProject
                 newList.Add(addList[i]);
                 if(count != addList.count)
                 {
-                    if(i+1 == count)
-                    {
-                        for(int j = i+1; j< addList.count; j++)
-                        {
-                            newList.Add(addList[j]);
-                        }
+
+                    ZipUnequalLists(count,i,addList,newList);
+                    ZipUnequalLists(addList.count,i,this,newList);
+                    //if(i+1 == count)
+                    //{
+                    //    for(int j = i+1; j< addList.count; j++)
+                    //    {
+                    //        newList.Add(addList[j]);
+                    //    }
                         
-                    }
-                    else if(i+1 == addList.count)
-                    {
-                        for (int j = i+1; j < count; j++)
-                        {
-                            newList.Add(items[j]);
-                        }
-                    }
+                    //}
+                    //else if(i+1 == addList.count)
+                    //{
+                    //    for (int j = i+1; j < count; j++)
+                    //    {
+                    //        newList.Add(items[j]);
+                    //    }
+                    //}
                 }
             }
 
             return newList;
+        }
+
+        private void ZipUnequalLists(int countSize, int counter,CustomList<T> zippedList,CustomList<T> newList)
+        {
+            if (counter + 1 == countSize)
+            {
+                for (int j = counter + 1; j < zippedList.count; j++)
+                {
+                    newList.Add(zippedList[j]);
+                }
+
+            }
         }
 
         public void Sort() //Insertion Sort
