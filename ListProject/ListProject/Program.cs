@@ -21,10 +21,15 @@ namespace ListProject
             list2.Add("3");
             list2.Add("4");
             list2.Add("JAryd");
+            list2.Add("JAryd");
+            list2.Add("JAryd");
+            list2.Add("JAryd");
+            list2.Add("JAryd");
+            list2.Add("JAryd");
 
-            result = list2 - list1;
+            result = list1.Zip(list2);
 
-            Console.WriteLine(list1);
+            Console.WriteLine(result);
             Console.ReadLine();
 
         }
